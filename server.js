@@ -58,7 +58,7 @@ function doParseRequest(encoding, cxt, fun) {
 module.exports = function(options) {
   var encoding = options.encoding || JSON;
   return function*() {
-    options.origin && (this.set('Access-Control-Allow-Origin', options.origin));
+    options.origin && this.req.headers && this.req.headers.origin && (this.set('Access-Control-Allow-Origin', this.req.headers.origin));
     options.credentials && (this.set('Access-Control-Allow-Credentials', true));
     if (this.url.slice(0, options.url.length) !== options.url) return
     var methodName = this.url.replace(options.url, '').replace(/^\//, ''),
