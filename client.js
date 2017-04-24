@@ -29,8 +29,10 @@ var unflatten = require('flat').unflatten
             sync: sync
           }),
           timeout: options.timeout || 30 * 1000,
-          withCredentials: options.credentials
+          withCredentials: options.credentials,
+          headers:{'qyrpc':window._qyrpc||''}
         }, function(err, resp, body) {
+          resp.headers.qyrpc && resp.headers.qyrpc.length>0 && (window._qyrpc=resp.headers.qyrpc);
           var args;
           if (sync) return
           if (err) return callback(err)
