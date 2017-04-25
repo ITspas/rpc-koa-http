@@ -1,5 +1,5 @@
 {
-  "name": "rpc-koa-http",
+  "name": "koa-rpc",
   "version": "1.0.0",
   "dependencies": {
     "collect-stream": "^1.0.0",
